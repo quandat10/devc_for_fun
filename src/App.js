@@ -3,9 +3,6 @@ import './App.css';
 import React, { Component, useState, useEffect, useRef } from 'react';
 
 class App extends Component {
-  showRes = () => {
-    alert(this.input.value)
-  }
 
   //POST data to server
   onCreateText = () => {
@@ -13,11 +10,9 @@ class App extends Component {
       method: "POST",
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ "textTrain": this.input.value })
-
     }).then(r => r.json()).then(res => {
       if (res) {
-
-        return alert(this.dataTrain["textTrain"])
+        return alert(JSON.stringify(res['textTrain']))
       }
     })
   }
@@ -32,12 +27,12 @@ class App extends Component {
   //   )
   
   // }
-  componentDidMount() {
-    // GET request using fetch with error handling
-    fetch('/api').then(
-      response => response.json()
-    ).then(data => this.dataTrain = data)
-  }
+  // componentDidMount() {
+  //   // GET request using fetch with error handling
+  //   fetch('/api').then(
+  //     response => response.json()
+  //   ).then(data => this.dataTrain = data)
+  // }
   render() {
     return (
       <div className="limiter">
